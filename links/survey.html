@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<style>
+			body
+			{
+				background-color: rgb(219, 252, 197);
+				min-width: 320px;
+			}
+			.center
+			{
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 50%;
+				height: auto;
+				max-width: 250px;
+			}
+			.border
+			{
+				background-color: white;
+				margin: 0 auto;
+				border-radius: 4px;
+				width: 75%;
+				max-width: 900px;
+				padding: 10px;
+				padding-top: 20px;				
+			}
+			.button
+			{
+				background-color: white;	
+				color: black;
+				border: 2px solid #4CAF50; /* Green */
+				border-radius: 12px;
+				padding: 14px 40px;
+				text-align: center;
+			}
+
+			.button:hover{
+				background-color: #4CAF50; /* Green */
+  				color: white;
+			}	
+
+			.align {
+ 				vertical-align: middle;
+			}
+		</style>
+		<!-- Set the encoding characters for the html -->
+		<meta charset = "utf-8"/>		
+		<title>A Generic Survey</title>
+	</head>
+	<!--This is the body of the html document which provides links to the different menu items.-->
+	<body>
+		<h1 id="title" class="center">Survey Form</h2>
+			<div class="border">
+					<p id="description">The purpose of this generic survey is to determine how much fun you had.</p><br>
+
+
+					<form id="survey-form">
+						<table>
+							<td><label id="name-label" >User Name:</label></td>
+							<td><input type="text" id="name" placeholder="name" required></td>
+						</table>
+						<table>
+								<td><label id="email-label" >Email Address:</label></td>
+								<td><input type="email" id="email" placeholder="email" pattern ="[A-Za-z]{1,}[@][A-Za-z]{1,}\.com" required></td>
+						</table>
+						<table>
+							<td><label id="number-label">Age:</label><br></td>
+							<td><input type="number" id="number" placeholder="number" pattern="[0-9]+" min="0" max="1000" required></td>
+						</table>
+
+						<br>
+						<table>
+
+							<td>
+									<p>What is your current role?</p>							
+							</td>
+							<td>
+								<select id="dropdown">
+									<option value="1">Student</option>
+									<option value="2">Engineer</option>
+									<option value="3">Manager</option>
+									<option value="4">Recruiter</option>
+									<option value="5">Adminsitrator</option>
+									<option value="6">Other</option>
+								</select>							
+							</td>
+						</table>
+						<br>
+						
+						<table>
+							<td><p>Tell us how much fun this was:</p></td>
+							<td>
+								<input type="radio" name="fun" value="very high">Again!<br> 
+								<input type="radio" name="fun" value="high">Why did it have to end!!<br>
+								<input type="radio" name="fun" value="high">Very.<br>
+								<input type="radio" name="fun" value="medium">That was all right..<br>
+								<input type="radio" name="fun" value="low">No fun.<br> 
+								<input type="radio" name="fun" value="very low">Take me bowling instead.<br>							
+							</td>
+						</table>					 
+						
+						<br>
+						<p>Overall how was it?</p>
+						<input type="checkbox" name="good" value="Good">Was this a good experience?</input>
+						<input type="checkbox" name="bad" value="Bad">Was this a bad experience?</input>
+						<br>
+						<textarea rows="4" cols="50">
+						</textarea>
+						<br>
+						<br>
+						<div style="text-align:center">
+								<input type="submit" id="submit" class="button">
+						</div>
+						<br>
+					</form>	
+			</div>
+
+		
+		<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+	</body>
+</html>
