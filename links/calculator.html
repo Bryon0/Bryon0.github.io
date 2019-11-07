@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .button_standard{
+  border: none ;
+  border-radius: 15;
+  color: white;
+  opacity: 0.8;
+  transition: 0.3s;
+	background-color: #4CAF50; 
+    height:25px;
+    width:50px;
+  }
+
+  .button_nonstandard{
+  border: none;
+  border-radius: 15;
+  color: white;
+  opacity: 0.8;
+  transition: 0.3s;  
+	background-color: #4CAF50;
+    height:25px;
+    width:100%;
+  }
+
+  .button_standard:hover, .button_nonstandard:hover {
+  background-color: rgb(177, 218, 178); /* Green */
+  color: white;
+
+  table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
+
+}
+
+  table, th, td {
+    /*border: 1px solid black; */
+    border-collapse: collapse;
+}
+
+
+table {
+    margin: 0 auto;
+    border: 3px solid green;
+}
+
+input[type="display"] {
+             display: block;
+             margin : 0 auto;
+        }
+
+</style>
+<title>My Home Page</title>
+</head>
+<body>
+  <div id="main">
+    <form action="" >
+      <!--<input align="center" type="display" id="displayCalc" value="0" readonly> -->
+      <br>
+      <table>
+         <input type="display" id="displayCalc" value="0" readonly>
+        </tr>
+          <tr>
+            <td><button type="button" id="1" class="button_standard" onclick="service_click(this.id)">1</button></td>
+            <td><button type="button" id="2"class="button_standard" onclick="service_click(this.id)">2</button></td>
+            <td><button type="button" id="3" class="button_standard" onclick="service_click(this.id)">3</button></td>
+          </tr>
+          <tr>
+            <td><button type="button" id="4" class="button_standard" onclick="service_click(this.id)">4</button></td>
+            <td><button type="button" id="5" class="button_standard"onclick="service_click(this.id)">5</button></td>
+            <td><button type="button" id="6"class="button_standard" onclick="service_click(this.id)">6</button></td>
+          </tr>
+          <tr>
+            <td><button type="button" id="7" class="button_standard" onclick="service_click(this.id)">7</button></td>
+            <td><button type="button" id="8" class="button_standard" onclick="service_click(this.id)">8</button></td>
+            <td><button type="button" id="9" class="button_standard" onclick="service_click(this.id)">9</button></td>
+          </tr>  
+          <tr>
+            <td colspan="2"><button type="button" id="0" class="button_nonstandard" onclick="service_click(this.id)">0</button></td>
+            <td><button type="button" id="dot" class="button_standard" onclick="service_click(this.id)">.</button></td>
+          </tr> 
+          <tr>
+            <td><button type="button" id="plus" class="button_standard" onclick="service_click(this.id)">+</button></td>
+            <td><button type="button" id="minus" class="button_standard" onclick="service_click(this.id)">-</button></td>
+            <td><button type="button" id="mult" class="button_standard"onclick="service_click(this.id)">*</button></td>
+          </tr>    
+          <tr>
+            <td><button type="button" id="div" class="button_standard" onclick="service_click(this.id)">/</button></td>
+            <td><button type="button" id="mod" class="button_standard" onclick="service_click(this.id)">%</button></td>
+            <td><button type="button" id="equal" class="button_standard" onclick="service_click(this.id)">=</button></td>
+          </tr>  
+          <tr>
+              <td colspan="3"><button type="button" id="clear" class="button_nonstandard" onclick="service_click(this.id)">Clear</button></td>
+        </tr>                           
+        </table>
+    </form>
+  </div>
+    <script type="text/javascript">
+
+		//This object will keep track of what has been entered by the user.
+		const calculator = {
+			value: '0',
+			firstOp: null,
+			secondOp: null,		
+			operator: null,	
+      waitSecondOp: false
+		};
+	
+		function updateDisplay() {
+			document.getElementById("displayCalc").value = calculator['value']; 
+		}
+    function displayResult() {
+      console.log("displayResult");
+      const operator = calculator['operator'];
+
+      let x = null;
+      if('+' === operator){
+        x = parseFloat(calculator['firstOp']) + parseFloat(calculator['secondOp']);
+      }
+      else if('-' === operator) {
+        x = parseFloat(calculator['firstOp']) - parseFloat(calculator['secondOp']);
+      }
+      else if('/' === operator) {
+        x = parseFloat(calculator['firstOp']) / parseFloat(calculator['secondOp']);
+      }   
+      else if('*' === operator) {
+        x = parseFloat(calculator['firstOp']) * parseFloat(calculator['secondOp']);
+      }    
+      else if('%' === operator) {
+        x = parseFloat(calculator['firstOp']) % parseFloat(calculator['secondOp']);
+      }             
+      
+      document.getElementById("displayCalc").value = x; 
+      calculator['firstOp'] = x;
+      calculator['operator'] = null;
+      calculator['waitSecondOp'] = false;
+    }
+
+    function clearDisiplay() {
+      console.log("clearDisiplay");
+      document.getElementById("displayCalc").value = '0';
+    }
+		
+		function addDigit(digit) {
+      console.log("addDigit " + digit);
+			const { value } = calculator;
+      calculator.value = value === '0' ? digit : value + digit;	
+
+      if(calculator.waitSecondOp === false) {
+        calculator.firstOp = calculator.value;
+      } else {
+        calculator.secondOp = calculator.value;
+      }
+
+      updateDisplay();
+		}
+
+    function addDecimal(dot) {
+      console.log("addDecimal " + dot);
+      if(!/\./.test(calculator.value)){
+        calculator.value = calculator.value + dot;
+        updateDisplay();
+      }
+		}
+
+    function addOperator(operator) {
+      console.log("addOperator " + operator);
+      calculator.operator = operator;
+      calculator.waitSecondOp = true;
+      calculator.value = '0';
+      updateDisplay();
+    }
+
+    function service_click(clicked_id)
+    {
+        let id = document.getElementById(clicked_id);
+        
+        this.blur();
+
+        //Check for digits
+        if(/\d/.test(id.id)) {
+          addDigit(id.id);
+        }
+        else if ('dot' === id.id) {
+          addDecimal('.');
+        }
+        else if ('clear' === id.id) {
+          clearDisiplay();
+          calculator['firstOp'] = null;
+          calculator['secondOp'] = null;
+          calculator['operand'] = null;
+          calculator['value'] = '0';
+          calculator['waitSecondOp'] = false;
+        }
+        else if('plus' === id.id) {
+          addOperator('+');
+        }
+        else if('minus' === id.id) {
+          addOperator('-');
+        }
+        else if('mult' === id.id) {
+          addOperator('*');
+        }  
+        else if('div' === id.id) {
+          addOperator('/');
+        }  
+        else if('mod' === id.id) {
+          addOperator('%');
+        }    
+        else if('equal' === id.id){
+          displayResult();
+        }             
+    }
+
+    //Start event listeners
+    document.addEventListener('keydown', (event)=>
+      {
+        console.log("Evnet Listener: Key down " + event.key.toString());
+        
+        //Get the digits
+        if((event.key >= 0) && (event.key <= 9)){
+          addDigit(event.key.toString());
+        }
+        else if('+' === event.key) {
+          addOperator('+');
+        }
+        else if('-' === event.key) {
+          addOperator('-');
+        }
+        else if('*' === event.key) {
+          addOperator('*');
+        }  
+        else if('/' === event.key) {
+          addOperator('/');
+        }  
+        else if('%' === event.key) {
+          addOperator('%');
+        }    
+        else if('Enter' === event.key){
+          displayResult();
+        }  
+      });
+    </script>
+</body>
+</html>
+
+
+
