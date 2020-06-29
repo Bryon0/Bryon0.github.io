@@ -12,13 +12,23 @@
 		<meta charset = "utf-8"/>		
 	</head>
 	<body>
-		<!-- Add some text to let the user know where is coming. -->
-		<p>Project Links</p>
-		<hr/>
-		<!-- Here are the links to the various projects that have been or will be added to GitHub. -->
-		<a href="links/survey.html">Survey</a>
-		<a href="links/calculator.html">Calculator</a>
-		<br>
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="links/survey.html">Simple Survey Page</a>
+			<a href="links/calculator.html">Calculator</a>
+			<a href="links/dice-game.html">Dice Game</a>
+		</div>
+		<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Project Links</span>
+			
+		<script>
+			function openNav() {
+			  document.getElementById("mySidenav").style.width = "250px";
+			}
+
+			function closeNav() {
+			  document.getElementById("mySidenav").style.width = "0";
+			}
+		</script>	
 
 	</body>
 </html>

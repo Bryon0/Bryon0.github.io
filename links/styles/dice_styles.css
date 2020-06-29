@@ -1,0 +1,152 @@
+/*
+	Author: Bryon Czaja
+	Class: SU18-CPSC-247000
+	Session: LT1
+	Description: This is for the dice game.
+*/ 
+
+/*
+Stying for the body section. 
+*/
+body
+{
+	background-image: url("yahtzee_dice.png");
+	background-repeat: no-repeat;	
+	background-position: top;		
+}
+
+/*
+Modify the appearance of a particular division.
+*/
+div.a
+{
+	background-color: lightblue;
+}
+
+/*
+Modify the appearance of the text boxes.
+*/
+input
+{
+	text-align: right;
+}
+
+/*
+Modify the appearance of the text boxes.
+*/
+p
+{
+	text-align: left;
+}
+
+/*
+Stying for the h1 type header.
+*/
+h1
+{
+	color: blue; 
+	margin: 60px
+}
+
+/*
+Stying for hyper links.
+*/
+a
+{
+	border: 1px solid glue;
+}
+
+/*
+Usage of the hover class that will hightlight the hyper links.
+*/
+a:hover
+{
+	background-color: blue;
+}
+
+/*
+Stying of the image. This makes it take up the whole section, plus it centers the image to the screen.
+*/
+img 
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*
+This formats the horizontal line.
+*/
+hr 
+{
+	border: 5;
+	width: 100%;
+	background-color: black;
+	height: 2px;
+}
+
+/*
+This formats the table to have a solid line and expands the entire width of the browser.
+*/
+table 
+{
+	/*border-collapse: collapse;*/
+	border: 1px solid black;
+	width: 60%;
+}
+
+/*
+This formats the border for the table headers and data. It also centers the text.
+*/
+th, td
+{
+	border: 1px solid black;
+	text-align: center;
+}
+
+/*
+Generic class selector to set the margin and center automatically.
+*/
+.adjust_table
+{
+	margin: 10px auto;
+}
+
+/*
+Generic class selector for the headers.
+*/
+.adjust_header
+{
+	border: 5;
+	width: 100%;
+	background-color: black;
+	height: 2px;
+}
+
+/*
+Generic class selector that can be applied to the biography section.
+*/
+.biography_background_color
+{
+    background-color: white;
+}
+
+/*
+Generic class selector that can be applied to the courses section.
+*/
+.courses_background_color
+{
+    background-color: white;;
+}
+
+/*
+Generic class selector that can be applied to the schedule section.
+*/
+.schedue_background_color
+{
+    background-color: white;;
+}
+
+
+
+
