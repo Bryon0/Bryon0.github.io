@@ -12,7 +12,7 @@
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 8px 8px 8px 64px;
   text-decoration: none;
   font-size: 25px;
   color: #818181;
@@ -35,4 +35,10 @@
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+#body-grad {
+  height: 100%;
+  background-color: white;
+  background-image: linear-gradient(to right, white , gray);
 }
